@@ -17,7 +17,7 @@ public class App
     public static void main(String[] args) throws Exception {
         if(args.length<5)
         {
-            System.out.println("233");
+            System.out.println("233,你的数据呢");
             return;
         }
         for (int i=0;i<args.length;i++)
@@ -31,13 +31,18 @@ public class App
         String outputfile=helper.getArg("-out","");
         float eta=helper.getArg("-eta",0.02f);
         int nIter=helper.getArg("-iter",5);
+
         DataUtil util=DataUtil.getInstance();
         List<DataNode> trainList=util.getDataList(trainfile,separator);
         List<DataNode> testList=util.getDataList(testfile,separator);
-        BufferedWriter output=new BufferedWriter(new FileWriter(new File(outputfile)));
-        int typeCount=util.getmTypeCount();
+        //划分出数据集和训练集
+        BufferedWriter output=new BufferedWriter(new FileWriter(new File(outputfile)));//划分输出集
+
+        int typeCount=util.getmTypeCount();//花卉的种类
         AnnClassifier annClassifier=new AnnClassifier(trainList.get(0).getmAttribList().size(),trainList.get(0).getmAttribList().size()+8,typeCount);
+
         annClassifier.setTrainNodes(trainList);
+
         annClassifier.train(eta,nIter);
         for(int i=0;i<testList.size();i++)
         {

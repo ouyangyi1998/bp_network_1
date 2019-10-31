@@ -25,6 +25,7 @@ public class NetworkNode {
     {
         this.type=type;
     }
+
     private float forwardSigmoid(float in)
     {
         switch (type)

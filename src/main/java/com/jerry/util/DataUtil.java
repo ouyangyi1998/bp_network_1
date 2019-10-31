@@ -12,7 +12,7 @@ public class DataUtil {
     private Map<String,Integer> mTypes;
     private int mTypeCount;
 
-    public DataUtil()
+    private DataUtil()
     {
         mTypes=new HashMap<>();
         mTypeCount=0;
@@ -39,7 +39,7 @@ public class DataUtil {
         {
             return new String("无法判断");
         }
-        Iterator<String> keys=mTypes.keySet().iterator();
+        Iterator<String> keys=mTypes.keySet().iterator();//keyset()返回key
         while(keys.hasNext())
         {
             String key=keys.next();
@@ -66,7 +66,7 @@ public class DataUtil {
               try{
                   node.addmAttribList(Float.valueOf(splits[i]));
               }catch (NumberFormatException e)
-              {//非数字 为类别 映射为数字
+              {//非数字 为类别 否则映射为数字
                   if(!mTypes.containsKey(splits[i]))
                   {
                       mTypes.put(splits[i],mTypeCount);
