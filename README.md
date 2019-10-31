@@ -9,4 +9,5 @@
    - 把数据trainNode导入AnnClassifier 神经元 通过train方法导入每一行数据
    - 把test方法获得判断出来的属性
    - 最后输入res.txt 
-- 在run configuration-program argument中设置值，在string[] args中获取 建议 eta=0.02 time 5000 文件路径为相对路径
+- 在run configuration-program argument中设置值，在string[] args中获取 
+- 建议 eta=0.02 time 5000 文件路径为相对路径
