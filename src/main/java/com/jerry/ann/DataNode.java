@@ -11,10 +11,9 @@ public class DataNode {
         return mAttribList;
     }
 
-   public void addmAttribList(Float val)
-   {
-       mAttribList.add(val);
-   }
+    public void addmAttribList(Float val) {
+        mAttribList.add(val);
+    }
 
     public int getType() {
         return type;
@@ -25,8 +24,8 @@ public class DataNode {
     }
 
     private int type;
-    public DataNode()
-    {
-        mAttribList=new ArrayList<>();
+
+    public DataNode() {
+        mAttribList = new ArrayList<>();
     }
 }
