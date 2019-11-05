@@ -39,14 +39,14 @@ public class AnnClassifier {
     private void updateWeights(float eta) {
         for (int i = 0; i < mInputCount; i++) {
             for (int j = 0; j < mHiddenCount; j++) {
-                mInputHiddenWeight[i][j] -= eta
+                mInputHiddenWeight[i][j] =mInputHiddenWeight[i][j]- eta
                         * mInputNodes.get(i).getmForwardOutputValue()
                         * mHiddenNodes.get(j).getmBackwardOutputValue();
             }
         }
         for (int i = 0; i < mHiddenCount; i++) {
             for (int j = 0; j < mOutputCount; j++) {
-                mHiddenOutputWeight[i][j] -= eta
+                mHiddenOutputWeight[i][j] = mHiddenOutputWeight[i][j]- eta
                         * mHiddenNodes.get(i).getmForwardOutputValue()
                         * mOutputNodes.get(j).getmBackwardOutputValue();
             }
@@ -63,14 +63,14 @@ public class AnnClassifier {
         {
             float temp = 0;
             for (int k = 0; k < mInputCount; k++) {
-                temp = (temp + mInputHiddenWeight[k][j]) * mInputNodes.get(k).getmForwardOutputValue();
+                temp = temp + mInputHiddenWeight[k][j] * mInputNodes.get(k).getmForwardOutputValue();
             }
             mHiddenNodes.get(j).setmForwardInputValue(temp);//隐含层2前向输入get
         }
         for (int j = 0; j < mOutputCount; j++) {
             float temp = 0;
             for (int k = 0; k < mHiddenCount; k++) {
-                temp = (temp + mHiddenOutputWeight[k][j])
+                temp = temp + mHiddenOutputWeight[k][j]
                         * mHiddenNodes.get(k).getmForwardOutputValue();
 
             }
@@ -92,7 +92,7 @@ public class AnnClassifier {
         {
             float temp = 0;
             for (int k = 0; k < mOutputCount; k++) {
-                temp = (temp + mHiddenOutputWeight[j][k]) * mOutputNodes.get(k).getmBackwardOutputValue();
+                temp = temp + mHiddenOutputWeight[j][k] * mOutputNodes.get(k).getmBackwardOutputValue();
             }
             mHiddenNodes.get(j).setmBackwardInputValue(temp);
         }
